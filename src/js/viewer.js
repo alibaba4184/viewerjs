@@ -251,7 +251,8 @@ class Viewer {
       const custom = isPlainObject(options.toolbar);
       const zoomButtons = BUTTONS.slice(0, 3);
       const rotateButtons = BUTTONS.slice(7, 9);
-      const scaleButtons = BUTTONS.slice(9);
+      const scaleButtons = BUTTONS.slice(9, 11);
+      const fullScreenButton = BUTTONS.slice(11);
 
       if (!custom) {
         addClass(toolbar, getResponsiveClass(options.toolbar));
@@ -267,6 +268,7 @@ class Viewer {
           || (!options.zoomable && zoomButtons.indexOf(name) !== -1)
           || (!options.rotatable && rotateButtons.indexOf(name) !== -1)
           || (!options.scalable && scaleButtons.indexOf(name) !== -1)
+          || (fullScreenButton.indexOf(name) !== -1)
         ) {
           return;
         }

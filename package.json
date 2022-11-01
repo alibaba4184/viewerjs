@@ -1,10 +1,10 @@
 {
-  "name": "viewerjs",
+  "name": "viewerjs-advance",
   "description": "JavaScript image viewer.",
-  "version": "1.11.0",
+  "version": "1.12.1",
   "main": "dist/viewer.common.js",
   "module": "dist/viewer.esm.js",
-  "browser": "dist/viewer.js",
+  "browser": "dist/viewer-advance.js",
   "style": "dist/viewer.css",
   "types": "types/index.d.ts",
   "files": [
@@ -19,7 +19,7 @@
     "clean": "del-cli dist",
     "compress": "npm run compress:css && npm run compress:js",
     "compress:css": "postcss dist/viewer.css -u cssnano -o dist/viewer.min.css --no-map",
-    "compress:js": "uglifyjs dist/viewer.js -o dist/viewer.min.js -c -m --comments /^!/",
+    "compress:js": "uglifyjs dist/viewer-advance.js -o dist/viewer.min.js -c -m --comments /^!/",
     "copy": "cpy dist/viewer.css docs/css",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylelint **/*.{css,scss} --fix",
