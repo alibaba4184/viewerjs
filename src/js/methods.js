@@ -829,7 +829,7 @@ export default {
     if (!this.isShown || this.played) {
       return this;
     }
-
+    // console.log('element', this.element);
     const { element, options } = this;
 
     if (isFunction(options.play)) {

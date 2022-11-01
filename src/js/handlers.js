@@ -45,7 +45,6 @@ export default {
     if (IS_TOUCH_DEVICE && event.isTrusted && target === this.canvas) {
       clearTimeout(this.clickCanvasTimeout);
     }
-
     switch (action) {
       case 'mix':
         if (this.played) {
@@ -113,7 +112,9 @@ export default {
       case 'flip-vertical':
         this.scaleY(-imageData.scaleY || -1);
         break;
-
+      case 'fullscreen-modal':
+        this.play(options.toolbar.fullscreenModal);
+        break;
       default:
         if (this.played) {
           this.stop();

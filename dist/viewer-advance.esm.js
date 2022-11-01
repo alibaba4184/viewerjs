@@ -1,11 +1,11 @@
 /*!
- * ViewerAdvance.js v1.12.0
+ * ViewerAdvance.js v1.12.6
  * https://fengyuanchen.github.io/viewerjs
  *
  * Copyright 2015-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2022-10-31T10:49:34.845Z
+ * Date: 2022-11-01T12:18:40.564Z
  */
 
 function ownKeys(object, enumerableOnly) {
@@ -357,7 +357,7 @@ var DATA_ACTION = "".concat(NAMESPACE, "Action");
 var REGEXP_SPACES = /\s\s*/;
 
 // Misc
-var BUTTONS = ['zoom-in', 'zoom-out', 'one-to-one', 'reset', 'prev', 'play', 'next', 'rotate-left', 'rotate-right', 'flip-horizontal', 'flip-vertical', 'full-screen'];
+var BUTTONS = ['zoom-in', 'zoom-out', 'one-to-one', 'reset', 'prev', 'play', 'next', 'rotate-left', 'rotate-right', 'flip-horizontal', 'flip-vertical', 'full-screen-modal'];
 
 /**
  * Check if the given value is a string.
@@ -1294,6 +1294,9 @@ var handlers = {
         break;
       case 'flip-vertical':
         this.scaleY(-imageData.scaleY || -1);
+        break;
+      case 'fullscreen-modal':
+        this.play(options.toolbar.fullscreenModal);
         break;
       default:
         if (this.played) {
@@ -2315,6 +2318,7 @@ var methods = {
     if (!this.isShown || this.played) {
       return this;
     }
+    // console.log('element', this.element);
     var element = this.element,
       options = this.options;
     if (isFunction(options.play)) {
@@ -3212,4 +3216,3 @@ var Viewer = /*#__PURE__*/function () {
 assign(Viewer.prototype, render, events, handlers, methods, others);
 
 export { Viewer as default };
-//# sourceMappingURL=viewer-advance.esm.js.map

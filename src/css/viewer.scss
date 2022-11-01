@@ -12,7 +12,8 @@
   &-flip-vertical,
   &-fullscreen,
   &-fullscreen-exit,
-  &-close {
+  &-close,
+  &-fullscreen-modal {
     &::before {
       background-image: url("../images/icons.png");
       background-repeat: no-repeat;
@@ -94,6 +95,11 @@
   &-close::before {
     background-position: -794px 4px;
     content: "Close";
+  }
+
+  &-fullscreen-modal::before {
+    background-position: -662px -2px;
+    content: "Full Screen Modal";
   }
 
   &-container {
@@ -246,6 +252,7 @@
         cursor: pointer;
         float: left;
         height: 50px;
+        margin: 0 5px;
         overflow: hidden;
         transition: background-color 0.15s;
         width: 50px;
