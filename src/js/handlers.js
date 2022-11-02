@@ -115,6 +115,9 @@ export default {
       case 'fullscreen-modal':
         this.play(options.toolbar.fullscreenModal);
         break;
+      case 'download':
+        this.download();
+        break;
       default:
         if (this.played) {
           this.stop();

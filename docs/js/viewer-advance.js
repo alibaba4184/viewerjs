@@ -1,11 +1,11 @@
 /*!
- * ViewerAdvance.js v1.12.6
+ * ViewerAdvance.js v1.12.8
  * https://fengyuanchen.github.io/viewerjs
  *
  * Copyright 2015-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2022-11-01T12:18:40.564Z
+ * Date: 2022-11-02T01:59:17.763Z
  */
 
 (function (global, factory) {
@@ -363,7 +363,7 @@
   var REGEXP_SPACES = /\s\s*/;
 
   // Misc
-  var BUTTONS = ['zoom-in', 'zoom-out', 'one-to-one', 'reset', 'prev', 'play', 'next', 'rotate-left', 'rotate-right', 'flip-horizontal', 'flip-vertical', 'full-screen-modal'];
+  var BUTTONS = ['zoom-in', 'zoom-out', 'one-to-one', 'reset', 'prev', 'play', 'next', 'rotate-left', 'rotate-right', 'flip-horizontal', 'flip-vertical', 'full-screen-modal', 'download'];
 
   /**
    * Check if the given value is a string.
@@ -1303,6 +1303,9 @@
           break;
         case 'fullscreen-modal':
           this.play(options.toolbar.fullscreenModal);
+          break;
+        case 'download':
+          this.download();
           break;
         default:
           if (this.played) {
@@ -2619,7 +2622,6 @@
           var image = images[i];
           if (image && img) {
             if (image.src !== img.src
-
             // Title changed (#408)
             || image.alt !== img.alt) {
               changedIndexes.push(i);
@@ -2660,6 +2662,19 @@
         this.build();
       }
       return this;
+    },
+    download: function download() {
+      var options = this.options,
+        images = this.images,
+        index = this.index;
+      var imageUrl = images[index].getAttribute(options.url);
+      var imageAlt = images[index].getAttribute('alt');
+      var a = document.createElement('a');
+      a.href = imageUrl;
+      a.download = imageAlt;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     },
     // Destroy the viewer
     destroy: function destroy() {
@@ -3102,7 +3117,7 @@
           var zoomButtons = BUTTONS.slice(0, 3);
           var rotateButtons = BUTTONS.slice(7, 9);
           var scaleButtons = BUTTONS.slice(9, 11);
-          var fullScreenButton = BUTTONS.slice(11);
+          var fullScreenButton = BUTTONS.slice(11, 12);
           if (!custom) {
             addClass(toolbar, getResponsiveClass(options.toolbar));
           }
@@ -3110,6 +3125,7 @@
             var deep = custom && isPlainObject(value);
             var name = custom ? hyphenate(index) : value;
             var show = deep && !isUndefined(value.show) ? value.show : value;
+            console.log('diwnload', name);
             if (!show || !options.zoomable && zoomButtons.indexOf(name) !== -1 || !options.rotatable && rotateButtons.indexOf(name) !== -1 || !options.scalable && scaleButtons.indexOf(name) !== -1 || fullScreenButton.indexOf(name) !== -1) {
               return;
             }
@@ -3135,6 +3151,7 @@
             if (isFunction(click)) {
               addListener(item, EVENT_CLICK, click);
             }
+            console.log('item', item);
             list.appendChild(item);
           });
           toolbar.appendChild(list);

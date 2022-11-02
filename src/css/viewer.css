@@ -12,11 +12,12 @@
 .viewer-fullscreen,
 .viewer-fullscreen-exit,
 .viewer-close,
-.viewer-fullscreen-modal {
+.viewer-fullscreen-modal,
+.viewer-download {
   &::before {
     background-image: url("../images/icons.png");
     background-repeat: no-repeat;
-    background-size: 830px;
+    background-size: 890px;
     color: transparent;
     display: block;
     font-size: 0;
@@ -99,6 +100,11 @@
 .viewer-fullscreen-modal::before {
   background-position: -662px -2px;
   content: "Full Screen Modal";
+}
+
+.viewer-download::before {
+  background-position: -842px -2px;
+  content: "Download";
 }
 
 .viewer-container {
@@ -256,7 +262,7 @@
 
       &:focus,
       &:hover {
-        background-color: rgba(0, 0, 0, 80%);
+        background-color: #0f62c3;
       }
 
       &:focus {

@@ -85,4 +85,5 @@ export const BUTTONS = [
   'flip-horizontal',
   'flip-vertical',
   'full-screen-modal',
+  'download',
 ];
